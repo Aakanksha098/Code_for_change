@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+        }
+        video {
+            width: 80%;
+            max-width: 600px;
+            border: 3px solid white;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <video id="video" autoplay></video>
+
+    <script>
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                document.getElementById("video").srcObject = stream;
+            })
+            .catch(function (error) {
+                alert("Camera access denied! Please allow camera permissions.");
+                console.error(error);
+            });
+    </script>
+
+</body>
+</html>
